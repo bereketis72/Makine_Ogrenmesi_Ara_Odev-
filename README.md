@@ -40,6 +40,4 @@ Gerçek dünyada veriler hiçbir zaman temiz gelmez. Bu projede de veri bilimi p
 
 <br>
 
-## 👨‍💻 Geliştirici
-**Bereket İŞ**  
-Veri Bilimi ve Yapay Zeka alanında çalışmalar yapıyorum. Kodun mantığı ve geliştirilmesiyle ilgili tüm iletişim kanallarından bana ulaşabilirsiniz.
+
