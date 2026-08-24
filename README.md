@@ -1,22 +1,25 @@
-# Makine Öğrenmesi Ara Ödevi - Müşteri Ayrılma (Churn) Tahmini
+📞 Müşteri Ayrılma Tahmini (Churn Prediction) & Makine Öğrenmesi Akışı
+📌 Proje Özeti
+Bu proje, makine öğrenmesinde Uçtan Uca (End-to-End) modelleme akışını pratik etmek amacıyla geliştirilmiştir. Bir müşterinin şirketi terk etme (churn) ihtimalini tahminlemek üzerine kurulan bu çalışmada; veri üretimi, eksik değer yönetimi, özellik mühendisliği (feature engineering) ve model seçimi adımları tek bir akış (pipeline) mantığıyla entegre edilmiştir.
 
-Bu proje, Türkiye Yapay Zeka Akademisi "Makine Öğrenmesi Ara Ödevi" kapsamında hazırlanmıştır.
+🎯 İş Problemi ve Yaklaşım
+Gerçek dünyada veriler hiçbir zaman temiz gelmez. Bu projede de veri bilimi pipeline'ının en kritik adımlarını simüle etmek hedeflenmiştir:
 
-## Projenin Amacı
-Projenin temel amacı, baştan sona (uçtan uca) bir makine öğrenmesi akışını tek bir Python dosyası içinde pratik etmektir. Proje kapsamında sentetik bir müşteri veri seti üretilmiş, bu veri seti üzerinde eksik veri doldurma, kategorik veri kodlama (One-Hot Encoding) ve ölçekleme (Scaling) gibi veri ön işleme adımları uygulanmıştır. Daha sonra veriler Eğitim (Train), Doğrulama (Validation) ve Test kümelerine ayrılarak Lojistik Regresyon ve K-En Yakın Komşu (KNN) modelleri eğitilmiştir.
-
-## İçerik
-- `odev.py`: Tüm veri üretim, ön işleme, model eğitimi ve değerlendirme aşamalarını içeren ana Python dosyasıdır.
-- `requirements.txt`: Projenin çalışması için gereken kütüphaneleri barındırır.
-- `README.md`: Proje açıklamasını içeren belge.
-
-## Nasıl Çalıştırılır?
-1. Repoyu bilgisayarınıza indirin veya klonlayın.
-2. Proje dizininde bir terminal açın.
-3. Gerekli kütüphaneleri yüklemek için aşağıdaki komutu çalıştırın:
-   `pip install -r requirements.txt`
-4. Ödevi ve sonuçlarını görmek için Python dosyasını çalıştırın:
-   `python odev.py`
-
-## Sonuç Yorumu
-Oluşturulan sentetik veri seti üzerinden Lojistik Regresyon ve KNN modelleri eğitilmiş ve Validation setindeki doğruluk (accuracy) skorlarına göre en iyi model seçilmiştir. Seçilen nihai model, daha önce hiç görmediği Test setine sokularak başarı metrikleri (Confusion Matrix, Accuracy, Precision, Recall, F1-Score) hesaplanmıştır. Veriler tamamen rastgele üretildiği için model metrikleri temel seviyede çıkmıştır, ancak makine öğrenmesi akışı (pipeline) tamamen sorunsuz çalışmaktadır.
+Gerçeğe uygun (Yaş, Gelir, Abonelik Süresi, Destek Talebi) müşteri profilleri oluşturuldu.
+Eksik veriler analiz edilerek Medyan (Ortanca) yöntemiyle uygun şekilde dolduruldu (Imputation).
+Çıplak veriyi zenginleştirmek için iş kurallarına dayalı Yeni Öznitelik (Feature Engineering) üretildi (Örn: gelir_grubu).
+Sınıflar arası dengesizliği korumak adına veri seti Stratified Split ile Train (%70), Validation (%15) ve Test (%15) olarak profesyonelce üçe bölündü.
+Mesafe tabanlı ve doğrusal algoritmaların sapma (bias) yapmaması için StandardScaler ile sadece Train setinden öğrenilen ölçekler diğer setlere uygulandı (Data Leakage önlendi).
+📈 Elde Edilen Temel Sonuçlar
+Karşılaştırmalı Modeller: Logistic Regression ve K-Nearest Neighbors (KNN)
+Model Seçimi: Her iki modelin Validation (Doğrulama) setindeki Accuracy (Doğruluk) oranları karşılaştırıldı ve kod tarafından otomatik olarak en yüksek performanslı model (Logistic Regression) nihai model seçildi.
+Değerlendirme: En iyi model hiç görmediği Test Seti üzerinde çalıştırılarak; Confusion Matrix, Accuracy, Precision, Recall ve F1-Score metrikleri raporlandı.
+🛠️ Kullanılan Teknolojiler
+Programlama Dili: Python
+Veri Manipülasyonu & Üretimi: Pandas, NumPy
+Makine Öğrenmesi: Scikit-Learn (LogisticRegression, KNeighborsClassifier, StandardScaler)
+Model Değerlendirme: accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+📂 Klasör Yapısı
+odev.py : Veri üretiminden başlayıp makine öğrenmesi metriklerinin raporlanmasına kadar giden ana pipeline (çalışma) dosyasıdır. Terminalden python odev.py yazılarak tek tuşla çalıştırılabilir.
+requirements.txt : Projenin bağımlılıklarını barındırır.
+README.md : Proje dokümantasyonudur.
